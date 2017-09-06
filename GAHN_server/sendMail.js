@@ -3,16 +3,21 @@ const nodemailer = require('nodemailer');
 const xoauth2 = require('xoauth2');
 const express = require('express');
 const app = express();
+const server = require('http').createServer(app)
 const port = process.env.PORT || 3000;
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
-// Open listening port
-app.listen(port, function(){
-    console.log('Listening to port ' + port);
+server.listen(port, function(){
+    console.log('on port ' + port);
 })
+
+// // Open listening port
+// app.listen(port, function(){
+//     console.log('Listening to port ' + port);
+// })
 
 // Temp post method
 app.post('/', function(req, res){
