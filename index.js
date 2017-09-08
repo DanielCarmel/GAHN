@@ -29,6 +29,10 @@ app.post('/', function(req, res){
     console.log(name + ' is ' + age + ' years old from ' + city);
 });
 
+app.get('/', function(req, res){
+    res.send("hey you")
+})
+
 // Info about Gmail api
 const transporter = nodemailer.createTransport({
     service: 'gmail',
