@@ -14,10 +14,8 @@ server.listen(port, function(){
     console.log('on port ' + port);
 })
 
-// // Open listening port
-// app.listen(port, function(){
-//     console.log('Listening to port ' + port);
-// })
+// Routing 
+//app.use(express.static(__dirname + 'public'));
 
 // Temp post method
 app.post('/', function(req, res){
