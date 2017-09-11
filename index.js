@@ -22,11 +22,9 @@ app.post('/', function(req, res){
     var name = req.body.name;
     var age = req.body.age;
     var city = req.body.city;
-
     
-    
-    res.send(req.body.name + ' is ' + age + ' years old from ' + city);
-    console.log(name + ' is ' + age + ' years old from ' + city);
+    //res.send(req.body.name + ' is ' + age + ' years old from ' + city);
+    console.log(req)
 });
 
 app.get('/', function(req, res){

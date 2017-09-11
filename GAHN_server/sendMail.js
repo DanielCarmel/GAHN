@@ -14,21 +14,15 @@ server.listen(port, function(){
     console.log('on port ' + port);
 })
 
-// // Open listening port
-// app.listen(port, function(){
-//     console.log('Listening to port ' + port);
-// })
-
 // Temp post method
 app.post('/', function(req, res){
     var name = req.body.name;
     var age = req.body.age;
     var city = req.body.city;
-
-    
-    
-    res.send(req.body.name + ' is ' + age + ' years old from ' + city);
-    console.log(name + ' is ' + age + ' years old from ' + city);
+    //res.send(req);
+    console.log(req.body);
+    //res.send(req.body.name + ' is ' + age + ' years old from ' + city);
+    //console.log(name + ' is ' + age + ' years old from ' + city);
 });
 
 // Info about Gmail api
