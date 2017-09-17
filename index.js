@@ -20,7 +20,10 @@ server.listen(port, function(){
 
 // Temp post method
 app.post('/', function(req, res){
-    console.log((req.body.data))
+    arr = JSON.parse(req.body.data);
+    for(var key in arr){
+        console.log(arr[key].url)
+    }
 });
 
 // Info about Gmail api
