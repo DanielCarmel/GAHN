@@ -1,38 +1,32 @@
 // Nodemailer files
-const nodemailer = require('nodemailer');
-const xoauth2 = require('xoauth2');
-const express = require('express');
-const app = express();
-const server = require('http').createServer(app)
-const port = process.env.PORT || 3000;
-
+var nodemailer = require('nodemailer');
+var xoauth2 = require('xoauth2');
+var express = require('express');
 var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
 
+var app = express();
+var server = require('http').createServer(app)
+var port = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true}));
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 server.listen(port, function(){
     console.log('on port ' + port);
 })
 
-// Routing 
-//app.use(express.static(__dirname + 'public'));
-
 // Temp post method
 app.post('/', function(req, res){
-    var name = req.body.name;
-    var age = req.body.age;
-    var city = req.body.city;
-    
-    //res.send(req.body.name + ' is ' + age + ' years old from ' + city);
-    console.log(req)
+    console.log((req.body.data))
 });
 
-app.get('/', function(req, res){
-    res.send("hey you")
-})
-
 // Info about Gmail api
-const transporter = nodemailer.createTransport({
+var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         type: 'OAuth2',
