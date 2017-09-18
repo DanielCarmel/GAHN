@@ -26,6 +26,10 @@ app.post('/', function(req, res){
     }
 });
 
+app.get("/", function(req, res){
+    res.send("hello")
+})
+
 // Info about Gmail api
 var transporter = nodemailer.createTransport({
     service: 'gmail',
