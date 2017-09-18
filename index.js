@@ -1,27 +1,33 @@
-// Nodemailer files
+// NodeJS files
 var nodemailer = require('nodemailer');
 var xoauth2 = require('xoauth2');
 var express = require('express');
 var bodyParser = require('body-parser');
-
 var app = express();
 var server = require('http').createServer(app)
 var port = process.env.PORT || 3000;
 
+// Configure network traffic
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+
+// Server listening
 server.listen(port, function(){
     console.log('on port ' + port);
 })
 
-// Temp post method
+// POST get data from extention
 app.post('/', function(req, res){
     var template = '';
+
+    // Get the data from request
     var arr = JSON.parse(req.body.data);
+
+    // Init the data into the template
     for(var key in arr){
         var currDate = new Date(Number(arr[key].time));
         template += '<tr><td class="lalign">'+ arr[key].url +'</td><td>'+ currDate +'</td></tr>'
@@ -30,9 +36,8 @@ app.post('/', function(req, res){
     // mail variable
     var mailOptions = {
         from: 'Daniel <danielcarmel6@gmail.com>',
-        to: 'daniel.store.ebay@gmail.com',
-        subject: 'The shit works!',
-        text: 'Hey future bae',
+        to: req.body.email,
+        subject: 'Browse history of the day:)',
         html: setTemplate(template)
     };
 
@@ -59,6 +64,7 @@ var transporter = nodemailer.createTransport({
     }
 })
 
+// Set the template to send to the mail
 function setTemplate(templateData){
     var templateFull = '<html>\
     <head>\
