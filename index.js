@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var server = require('http').createServer(app)
 var port = process.env.PORT || 3000;
+var path    = require("path");
 
 // Configure network traffic
 app.use(bodyParser.json());
@@ -21,7 +22,7 @@ server.listen(port, function(){
 })
 
 app.get('/', function(req, res){
-  res.send('hello world');
+  res.sendFile(path.join(__dirname+'/forbidden.html'));
 });
 
 // POST get data from extention
