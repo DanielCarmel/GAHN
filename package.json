@@ -1,6 +1,6 @@
 {
   "name": "GAHN-server",
-  "version": "1.0",
+  "version": "0.1.0",
   "description": "the server for GAHN extention",
   "main": "index.js",
   "author": "Daniel Carmel",
