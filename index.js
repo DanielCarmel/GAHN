@@ -20,6 +20,10 @@ server.listen(port, function(){
     console.log('on port ' + port);
 })
 
+app.get('/', function(req, res){
+  res.send('hello world');
+});
+
 // POST get data from extention
 app.post('/', function(req, res){
     var template = '';
