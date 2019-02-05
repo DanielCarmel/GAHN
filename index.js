@@ -23,7 +23,6 @@ server.listen(port, function(){
 // POST get data from extention
 app.post('/', function(req, res){
     var template = '';
-
     // Get the data from request
     var arr = JSON.parse(req.body.data);
 
