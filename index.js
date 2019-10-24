@@ -39,7 +39,7 @@ app.post('/', function(req, res){
 
     // mail variable
     var mailOptions = {
-        from: 'Daniel <danielcarmel6@gmail.com>',
+        from: 'Daniel <danielcarmel96@gmail.com>',
         to: req.body.email,
         subject: 'Browse history of the day:)',
         html: setTemplate(template)
